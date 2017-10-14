@@ -19,9 +19,18 @@ public class Gateway {
             Socket s = ss.accept();
             DataInputStream dis = new DataInputStream(s.getInputStream());
             DataOutputStream dout = new DataOutputStream(s.getOutputStream());
-            dout.writeUTF("Enter name: ");
-            String name = (String)dis.readUTF();
-            System.out.println("Name is " + name);
+            dout.writeUTF("Enter your option:\n1. Log In\n2. Sign Up\n\n");
+            String option = (String)dis.readUTF();
+            switch(option) {
+                case "1": {
+                    
+                }
+                case "2": {
+                    dout.writeUTF("Signing up...\n\nUser Name: ");
+                    System.out.println("User Name: " + dis.readUTF());
+                }
+            }
+            //System.out.println("Name is " + name);
             ss.close();
         } catch(Exception e) {
             System.out.println(e);
